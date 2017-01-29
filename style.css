@@ -1,0 +1,20 @@
+/*
+Theme Name: zltq
+Theme URI: http://teamtreehouse.com/wordpress-bootstrap-theme-tutorial
+Description: 这个模版是我的第一个模板，主要使用了bootstrap的一些特性，bootstrap的版本是3.3.7<a href="http://www.nmgzlt.com">这个网站是扎鲁特旗创想电脑的网站，主要是在这里做个说明而已。</a>.
+Author: 张祚亮
+Author URI: http://www.nmgzlt.com/
+Version: 1.0.0
+Tags: bootstrap, 新模版, 扎鲁特旗
+
+License: Attribution-ShareAlike 3.0 Unported (CC BY-SA 3.0)
+License URI: http://creativecommons.org/licenses/by-sa/3.0/
+
+This simple theme was built using the example Bootstrap theme "Basic marketing site" found on the Bootstrap web site http://twitter.github.com/bootstrap/examples/hero.html
+*/
+@import url('bootstrap/css/bootstrap.css'); 
+@import url('bootstrap/css/bootstrap-theme.css'); 
+body { 
+	padding-top: 60px;
+     padding-bottom: 40px; 
+}

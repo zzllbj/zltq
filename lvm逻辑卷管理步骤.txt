@@ -1,0 +1,47 @@
+//LVM逻辑卷管理
+通过fdisk -l查看新添加的物理磁盘
+
+一 建立物理卷PV
+//这里的sdb是我添加的新的物理卷
+pvcreate /dev/sdb
+二 建立卷组VG
+//这里我们可以添加新的卷组也可以使用就的卷组
+vgcreate ｛卷组名 必须是英文的｝/dev/sdb
+//扩展vg空间
+vgextend {vg_name} /dev/sdb
+三 建立逻辑卷LV
+//这里可以按MB GB添加
+lvcreate -n {逻辑卷名字，必须是英文} -L +1024MB ｛卷组名｝
+四 初始化/格式化逻辑卷
+mkfs.ext4 /dev/vg_test/test_lv
+五 挂载逻辑卷到指定目录
+mount /dev/vg_test/test_lv /mnt
+//mount直接输入此命令可以查看是否挂载上 
+
+六 扩展逻辑卷的空间
+//这里我们选择自己要扩展的逻辑卷名字即可
+lvextend -L +1G /dev/vg_test/test_lv 
+七 刷新逻辑卷信息
+resize2fs /dev/vg_test/test_lv
+//df -h使用此命令可以查看空间是否已经扩展
+=========
+//常用命令
+vgs
+pvs
+lvs
+vgdisplay
+pvdisplay
+lvdisplay
+fdisk -l
+df -hl
+=========
+缩小逻辑卷
+一 卸载已经挂载的逻辑卷
+umount /dev/vg_test/test_lv
+二 缩小文件系统
+resize2fs /dev/vg_test/test_lv 1G
+三 缩小逻辑卷
+lvreduce -L -1G /dev/vg_test/test_lv
+lvdisplay
+mount /dev/vg_test/test_lv /mnt
+
